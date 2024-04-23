@@ -10,6 +10,15 @@ app.use(express.json());
 const contatoRouter = require('./routes/contatoRoutes');
 app.use('/contatos', contatoRouter);
 
+
+app.use((req, res) =>{
+  res.statusCode=400;
+  res.send({
+    error:"123",
+    message:"Rota inválida"
+  })
+});
+
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
